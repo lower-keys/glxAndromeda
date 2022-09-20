@@ -1,10 +1,8 @@
 let fetch = require('node-fetch')
 
 let handler = async (m, { conn, text, command, usedPrefix }) => {
-    let chat = db.data.chats[m.chat]
-    if (!chat.nsfw || chat.isBanned) throw `Fitur NSFW Tidak Aktif`
     if (!text) throw `text nya mana?\n\ncontoh:\n${usedPrefix + command} jepang`
-    let res = await fetch(API('lol', '/api/xnxxsearch', { query: text }, 'apikey'))
+    let res = await fetch(API('lol', '/api/xnxxsearch', { query: text }, 'Deffbotz'))
     if (!res.ok) return await res.text()
     let json = await res.json()
     if (json.status != 200) throw json
